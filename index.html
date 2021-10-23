@@ -119,21 +119,44 @@
                                     track-fill-color="secondary" :min="0" step="20" thumb-label="always"
                                     :max="maxWidth()" hint="X offset" persistent-hint>
                                 </v-slider>
-                                <v-row class="mt-4" align="center" justify="space-around">
+                                <div class="text-body-1 mt-6  mb-3">Figures</div>
+                                <v-row align="center" justify="space-around">
                                     <v-col cols="auto">
-                                        <v-btn color="primary" @click="center">
-                                            Center
+                                        <v-btn color="primary" @click="reset">
+                                            Basic
                                         </v-btn>
                                     </v-col>
                                     <v-col cols="auto">
-                                        <v-btn color="primary" @click="reset">
-                                            Reset
+                                        <v-btn color="primary" @click="center">
+                                            Curves
+                                        </v-btn>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <v-btn color="primary" @click="applyWings">
+                                            Wings
+                                        </v-btn>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <v-btn color="primary" @click="applyBrain">
+                                            Brain
+                                        </v-btn>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <v-btn color="primary" @click="applyWindmill">
+                                            Windmill
+                                        </v-btn>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <v-btn color="primary" @click="applyButterfly">
+                                            Butterfly
+                                        </v-btn>
+                                    </v-col>
+                                    <v-col cols="auto">
+                                        <v-btn color="primary" @click="applyFlower">
+                                            Flower
                                         </v-btn>
                                     </v-col>
                                 </v-row>
-
-
-
                             </v-card>
                         </v-col>
                     </v-row>

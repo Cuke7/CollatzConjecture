@@ -23,6 +23,14 @@ let vue = new Vue({
         Yoffset: 200,
         Xoffset: 0,
         stepSize: 10,
+        wings: false,
+        windmill: false,
+        trees: [
+            {
+                rotation: 0,
+                modif: 1,
+            },
+        ],
     }),
     watch: {
         angle() {
@@ -51,12 +59,192 @@ let vue = new Vue({
             this.Xoffset = this.maxWidth() / 2;
             this.angle = 0.5;
             this.stepSize = 10;
+            this.trees = [
+                {
+                    rotation: 0,
+                    modif: 1,
+                },
+            ];
         },
         reset() {
             this.Yoffset = this.maxHeight() * 0.8;
             this.Xoffset = 0;
             this.angle = 0.04;
             this.stepSize = 10;
+            this.trees = [
+                {
+                    rotation: 0,
+                    modif: 1,
+                },
+            ];
+        },
+        applyWings() {
+            this.Yoffset = this.maxHeight() * 0.7;
+            this.Xoffset = this.maxWidth() / 2;
+            this.angle = 0.06;
+            this.stepSize = 5;
+            this.trees = [
+                {
+                    rotation: 0,
+                    modif: 1,
+                },
+                {
+                    rotation: PI,
+                    modif: -1,
+                },
+            ];
+        },
+        applyBrain() {
+            this.Yoffset = this.maxHeight() / 2;
+            this.Xoffset = this.maxWidth() / 2;
+            this.angle = 0.3;
+            this.stepSize = 3;
+            this.trees = [
+                {
+                    rotation: 0,
+                    modif: 1,
+                },
+                {
+                    rotation: PI,
+                    modif: -1,
+                },
+            ];
+        },
+        applyWindmill() {
+            this.Yoffset = this.maxHeight() / 2;
+            this.Xoffset = this.maxWidth() / 2;
+            this.angle = 0.07;
+            this.stepSize = 3;
+            this.trees = [
+                {
+                    rotation: 0,
+                    modif: 1,
+                },
+                {
+                    rotation: PI / 2,
+                    modif: 1,
+                },
+                {
+                    rotation: PI,
+                    modif: 1,
+                },
+                {
+                    rotation: (3 * PI) / 2,
+                    modif: 1,
+                },
+            ];
+        },
+        applyButterfly() {
+            this.Yoffset = this.maxHeight() / 2;
+            this.Xoffset = this.maxWidth() / 2;
+            this.angle = 0.07;
+            this.stepSize = 3;
+            this.trees = [
+                {
+                    rotation: -(1 * PI) / 4 + PI / 4,
+                    modif: -1,
+                },
+                {
+                    rotation: (1 * PI) / 4 + PI / 4,
+                    modif: 1,
+                },
+                {
+                    rotation: (1 * PI) / 4 + PI / 4,
+                    modif: -1,
+                },
+                {
+                    rotation: (3 * PI) / 4 + PI / 4,
+                    modif: 1,
+                },
+                {
+                    rotation: (3 * PI) / 4 + PI / 4,
+                    modif: -1,
+                },
+                {
+                    rotation: (5 * PI) / 4 + PI / 4,
+                    modif: 1,
+                },
+                {
+                    rotation: (5 * PI) / 4 + PI / 4,
+                    modif: -1,
+                },
+                {
+                    rotation: (7 * PI) / 4 + PI / 4,
+                    modif: 1,
+                },
+            ];
+        },
+        applyFlower() {
+            this.Yoffset = this.maxHeight() / 2;
+            this.Xoffset = this.maxWidth() / 2;
+            this.angle = 0.08;
+            this.stepSize = 3;
+            this.trees = [
+                {
+                    rotation: -(1 * PI) / 4,
+                    modif: -1,
+                },
+                {
+                    rotation: (1 * PI) / 4,
+                    modif: 1,
+                },
+                {
+                    rotation: (1 * PI) / 4,
+                    modif: -1,
+                },
+                {
+                    rotation: (3 * PI) / 4,
+                    modif: 1,
+                },
+                {
+                    rotation: (3 * PI) / 4,
+                    modif: -1,
+                },
+                {
+                    rotation: (5 * PI) / 4,
+                    modif: 1,
+                },
+                {
+                    rotation: (5 * PI) / 4,
+                    modif: -1,
+                },
+                {
+                    rotation: (7 * PI) / 4,
+                    modif: 1,
+                },
+                {
+                    rotation: -(1 * PI) / 4 + PI / 4,
+                    modif: -1,
+                },
+                {
+                    rotation: (1 * PI) / 4 + PI / 4,
+                    modif: 1,
+                },
+                {
+                    rotation: (1 * PI) / 4 + PI / 4,
+                    modif: -1,
+                },
+                {
+                    rotation: (3 * PI) / 4 + PI / 4,
+                    modif: 1,
+                },
+                {
+                    rotation: (3 * PI) / 4 + PI / 4,
+                    modif: -1,
+                },
+                {
+                    rotation: (5 * PI) / 4 + PI / 4,
+                    modif: 1,
+                },
+                {
+                    rotation: (5 * PI) / 4 + PI / 4,
+                    modif: -1,
+                },
+                {
+                    rotation: (7 * PI) / 4 + PI / 4,
+                    modif: 1,
+                },
+            ];
         },
     },
     mounted: function () {
@@ -76,17 +264,9 @@ let step = Math.floor(Math.random() * 500);
 function setup() {
     cnv = createCanvas(w, h);
     cnv.parent("sketch-holder");
-    // angleMode(DEGREES);
     background(0);
     colorMode(HSB, 100);
-
     strokeWeight(2);
-
-    // for (let i = 1; i < 50000; i += 300) {
-    //     drawCollatz(i);
-    // }
-
-    // drawCollatz(871)
 }
 
 function draw() {
@@ -99,22 +279,25 @@ function draw() {
 }
 
 function drawCollatz(n) {
-    resetMatrix();
-    translate(vue.Xoffset, vue.Yoffset);
     let data = calcCollatz(n);
-    let c = 1;
 
-    for (const d of data) {
-        let p = (c / data.length) * 100;
-        stroke(p, 100, 100, 100 - p);
-        c++;
-        if (d % 2 == 0) {
-            rotate(vue.angle);
-        } else {
-            rotate(-vue.angle);
+    for (const tree of vue.trees) {
+        let c = 1;
+        resetMatrix();
+        translate(vue.Xoffset, vue.Yoffset);
+        rotate(tree.rotation);
+        for (const d of data) {
+            let p = (c / data.length) * 100;
+            stroke(p, 100, 100, 100 - p);
+            c++;
+            if (d % 2 == 0) {
+                rotate(tree.modif * vue.angle);
+            } else {
+                rotate(-tree.modif * vue.angle);
+            }
+            line(0, 0, vue.stepSize, 0);
+            translate(vue.stepSize, 0);
         }
-        line(0, 0, vue.stepSize, 0);
-        translate(vue.stepSize, 0);
     }
 }
 
